@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <conio.h>
+#include <windows.h>
+void gotoxy (int x, int y)  { 
+    COORD coord;
+    coord.X = x; 
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+
+int radar () {
+	int altoradar=10, anchoradar=50, i, o, ascii=219;
+	gotoxy(0,0);
+	for (o=0;o<anchoradar;o++) printf ("%c", ascii);
+	printf ("\n");
+	for (i=1; i<altoradar;i++) {
+		for (o=0; o<anchoradar; o++) {
+			if (o==0||o==anchoradar-1) printf ("%c", ascii);
+			else printf (" ");
+		}
+		printf ("\n");
+	}
+	for (o=0;o<anchoradar;o++) printf ("%c", ascii);
+}
+
+int consola () {
+	int altoconsola=25, anchoconsola=50, i, o, ascii=219;
+	gotoxy(49,0);
+	for (o=0;o<anchoconsola;o++) printf ("%c", ascii);
+	printf ("\n");
+	for (i=1; i<altoconsola;i++) {
+		gotoxy(49,i);
+		for (o=0; o<anchoconsola; o++) {
+			if (o==0||o==anchoconsola-1) printf ("%c", ascii);
+			else printf (" ");
+		}
+		printf ("\n");
+	}
+	gotoxy(49,altoconsola);
+	for (o=0; o<anchoconsola; o++) printf ("%c", ascii);
+}
+
+int informacion () {
+	int altoinformacion=15, anchoinformacion=50, i, o, ascii=219;
+	gotoxy(0,10);
+	for (o=0;o<anchoinformacion;o++) printf ("%c", ascii);
+	printf ("\n");
+	for (i=1; i<altoinformacion;i++) {
+		for (o=0; o<anchoinformacion; o++) {
+			if (o==0||o==anchoinformacion-1) printf ("%c", ascii);
+			else printf (" ");
+		}
+		printf ("\n");
+	}
+	for (o=0;o<anchoinformacion;o++) printf ("%c", ascii);
+}
+
+int main () {
+	radar ();
+	getch();
+	consola ();
+	getch();
+	informacion ();
+	getch();
+	system("cls");
+	getch();
+	radar ();
+	consola ();
+	informacion ();
+}
